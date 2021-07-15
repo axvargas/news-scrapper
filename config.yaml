@@ -1,0 +1,14 @@
+
+#  * Created Date: Tuesday July 13th 2021 8:39:31 pm
+#  * Author: Andrés X. Vargas
+#  * -----
+#  * Last Modified: Tuesday July 13th 2021 8:39:32 pm
+#  * Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
+#  * -----
+#  * Copyright (c) 2021 MattuApps
+#  *
+news_sites:
+  eluniversal:
+    url: http://www.eluniversal.com.mx
+  elpais:
+    url: https://elpais.com
