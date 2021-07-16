@@ -2,7 +2,7 @@
 Created Date: Thursday July 15th 2021 11:14:20 am
 Author: Andrés X. Vargas
 -----
-Last Modified: Thursday July 15th 2021 8:52:19 pm
+Last Modified: Thursday July 15th 2021 8:54:29 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -18,6 +18,7 @@ class NewsPage:
         self._config = config()['news_sites'][news_site_uid]
         self._queries = self._config['queries']
         self._html = None
+        self._url = url
 
         self._visit(url)
 
