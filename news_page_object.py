@@ -2,7 +2,7 @@
 Created Date: Thursday July 15th 2021 11:14:20 am
 Author: Andrés X. Vargas
 -----
-Last Modified: Thursday July 15th 2021 6:58:48 pm
+Last Modified: Thursday July 15th 2021 8:52:19 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -58,3 +58,7 @@ class ArticlePage(NewsPage):
     def title(self):
         result = self._select(self._queries['article_title'])
         return result[0].text if len(result) else ''
+
+    @property
+    def url(self):
+        return self._url
