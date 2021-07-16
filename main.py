@@ -2,7 +2,7 @@
 Created Date: Tuesday July 13th 2021 8:49:03 pm
 Author: Andrés X. Vargas
 -----
-Last Modified: Thursday July 15th 2021 7:02:19 pm
+Last Modified: Thursday July 15th 2021 10:11:13 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -65,9 +65,9 @@ def _fetch_article(news_site_uid, host, link):
     except (HTTPError, MaxRetryError) as e:
         logger.warning('Error while fetching the article', exc_info=False)
 
-    if article and not article.body:
-        logger.warning('Invalid article. There is no body')
-        return None
+    # if article and not article.body:
+    #     logger.warning('Invalid article. There is no body')
+    #     return None
 
     logger.info(f'Finished fetching article at {final_link}')
     return article
@@ -75,9 +75,7 @@ def _fetch_article(news_site_uid, host, link):
 
 def _build_link(host, link):
     if is_well_formed_url.match(link):
-        if link.startswith(host):
-            return link
-        return None
+        return link
 
     elif is_root_path.match(link):
         return f'{host}{link}'

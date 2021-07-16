@@ -2,7 +2,7 @@
 Created Date: Thursday July 15th 2021 11:14:20 am
 Author: Andrés X. Vargas
 -----
-Last Modified: Thursday July 15th 2021 8:54:29 pm
+Last Modified: Thursday July 15th 2021 10:07:55 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -26,7 +26,7 @@ class NewsPage:
         return self._html.select(query_string)
 
     def _visit(self, url):
-        response = requests.get(url)
+        response = requests.get(url, timeout=5, verify=False, stream=True)
         response.raise_for_status()  # ! in case od error this raises an error
         self._html = bs4.BeautifulSoup(response.text, 'html.parser')
 
