@@ -2,12 +2,12 @@
 Created Date: Thursday July 15th 2021 11:14:20 am
 Author: Andrés X. Vargas
 -----
-Last Modified: Thursday July 15th 2021 10:07:55 pm
+Last Modified: Friday July 16th 2021 11:23:42 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
 '''
-from common import config
+from extract.common import config
 import requests
 import bs4
 

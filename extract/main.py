@@ -2,7 +2,7 @@
 Created Date: Tuesday July 13th 2021 8:49:03 pm
 Author: Andrés X. Vargas
 -----
-Last Modified: Friday July 16th 2021 11:14:38 pm
+Last Modified: Friday July 16th 2021 11:23:55 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -15,8 +15,8 @@ import csv
 from datetime import datetime
 from requests.models import HTTPError
 from urllib3.exceptions import MaxRetryError
-from news_page_object import ArticlePage, HomePage
-from common import config
+from extract.news_page_object import ArticlePage, HomePage
+from extract.common import config
 
 
 logging.basicConfig(level=logging.INFO)
