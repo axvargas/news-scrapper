@@ -2,7 +2,7 @@
 Created Date: Thursday July 15th 2021 10:25:37 pm
 Author: Andrés X. Vargas
 -----
-Last Modified: Friday July 16th 2021 9:02:55 pm
+Last Modified: Friday July 16th 2021 9:53:50 pm
 Modified By: the developer known as Andrés X. Vargas at <axvargas@fiec.espol.edu.ec>
 -----
 Copyright (c) 2021 MattuApps
@@ -70,7 +70,7 @@ def _fill_missing_titles(df):
     logger.info('Filling missing titles')
     missing_titles_mask = df['title'].isna()
     missing_titles = df[missing_titles_mask]['url'].str.extract(
-        r'(?P<missing_titles>[^/]+)$').applymap(lambda title: title.replace('-', " ").capitalize())
+        r'(?P<missing_titles>[^/]+)$').astype(str).applymap(lambda title: title.replace('-', " ").capitalize())
     df.loc[missing_titles_mask, 'title'] = missing_titles.loc[:, 'missing_titles']
 
     return df
@@ -88,7 +88,8 @@ def _generate_uids_bt_rows(df):
 
 def _clean_body(df):
     logger.info('Cleaning body from newlines')
-    df['body'] = df.apply(lambda row: row['body'].replace('\n', ''), axis=1)
+    df['body'] = df.apply(lambda row: row.astype(
+        str)['body'].replace('\n', ''), axis=1)
 
     return df
 
@@ -116,23 +117,27 @@ def _delete_duplicates_entries(df, subset):
 
 def _drop_rows_with_missing_values(df):
     logger.info('Dropping missing values')
-    return df.dropna()
+    df = df.dropna()
+    df = df[df['body'] != 'nan']
+    
+    return df
 
 
 def _save_data(df, filename):
-    clean_filename = f'clean_{filename}'
+    clean_filename= f'clean_{filename}'
     logger.info(f'Saving data in {clean_filename}')
     df.to_csv(clean_filename)
     logger.info(f'Data successfully saved in {clean_filename}')
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser= argparse.ArgumentParser()
     parser.add_argument(
         'filename',
         help='The path to dirty data',
         type=str
     )
 
-    args = parser.parse_args()
-    df = main(args.filename)
+    args= parser.parse_args()
+    df= main(args.filename)
+    print(df)
